@@ -5,10 +5,8 @@ Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| requir
 Dir[File.join(File.dirname(__FILE__), "../lib/support", "*.rb")].each {|f| require f}
 
 ENV["SCHOOL_ENV"] ||= "development"
-
 DBRegistry[ENV["SCHOOL_ENV"]].connect!
 DB = ActiveRecord::Base.connection
-
 if ENV["SCHOOL_ENV"] == "test"
   ActiveRecord::Migration.verbose = false
 end
